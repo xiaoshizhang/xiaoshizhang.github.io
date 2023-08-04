@@ -489,6 +489,7 @@ button {
   transition-property: color, background, box-shadow, border-color, transform;
 }
 .btn:hover {
+  transform: scaleX(1.06) scaleY(1.06);
   box-shadow: 2px 2px 8px var(--shadow-hover-color);
 }
 .btn:hover {
@@ -2411,6 +2412,7 @@ pre .javascript .function {
   margin-bottom: 0;
 }
 .post-tools-container .tools-list li:hover {
+  transform: scaleX(1.06) scaleY(1.06);
   box-shadow: 2px 2px 8px var(--shadow-hover-color);
 }
 .post-tools-container .tools-list li.toggle-show-toc {
@@ -2959,6 +2961,7 @@ pre .javascript .function {
   }
 }
 .home-content-container .home-article-list .home-article-item:hover {
+  transform: scaleX(1.015) scaleY(1.015);
   box-shadow: 2px 2px 8px var(--shadow-hover-color);
 }
 @media (max-width: 800px) {
@@ -3312,6 +3315,7 @@ pre .javascript .function {
 }
 .post-page-container .article-content-container .article-nav .article-prev:hover,
 .post-page-container .article-content-container .article-nav .article-next:hover {
+  transform: scaleX(1.03) scaleY(1.03);
   box-shadow: 2px 2px 8px var(--shadow-hover-color);
 }
 @media (max-width: 800px) {
