@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="小师丈">
+    
+    <title>
+        
+            从零开始学JavaScript（007 字符串） |
+        
+        Shizhang&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/かき氷-(1).3nlbell2l0s0.webp">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"xiaoshizhang.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true},"style":{"primary_color":"#2f2f35","logo":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/かき氷-(1).3nlbell2l0s0.webp","favicon":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/かき氷-(1).3nlbell2l0s0.webp","avatar":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/81e0cd6bea74c98b6ad24051d18f0b5d_1.7dwl6x6nmww0.webp","font_size":"15px","font_family":"STHeiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/wallhaven-zy5jyy-(1).2863f7y14ocg.webp","description":"失败总是贯穿人生的始终...","font_color":"#c27c88","hitokoto":true},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":"BmYr9Z65RyUJbvaDCcggcX8K-gzGzoHsz","appkey":"2w1e5uG9qbJVmDTNNrCaWimf","server_urls":"https://bmyr9z65.lc-cn-n1-shared.com","placeholder":"发一条友善的评论~"},"gitalk":{"github_id":"xiaoshizhang","github_admins":null,"repository":"comments","client_id":"45fd382b5ceb7efb0ed0","client_secret":"7c37f7a944e4a6c12e27384a16243ca4798150fd","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["炼气","筑基","结丹","元婴","化神"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/%E3%81%8B%E3%81%8D%E6%B0%B7-(1).3nlbell2l0s0.webp">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Shizhang&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">从零开始学JavaScript（007 字符串）</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/81e0cd6bea74c98b6ad24051d18f0b5d_1.7dwl6x6nmww0.webp">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">小师丈</span>
+                            
+                                <span class="author-label">结丹</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-08-18 16:28:45</span>
+        <span class="mobile">2023-08-18 16:28</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-08-18 16:30:30</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/JavaScript/">JavaScript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.3k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/wallhaven-6o1pl7-(1)-(1).46yjgf2id300.webp"
+                      alt="wallhaven-6o1pl7-(1)-(1)"
+                ><br>简而言之，字符串就是零个或多个排在一起的字符，放在单引号或双引号之中。</p>
+<span id="more"></span>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>字符串就是零个或多个排在一起的字符，放在单引号或双引号之中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="string">&quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>单引号字符串的内部，可以使用双引号。双引号字符串的内部，可以使用单引号。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;key = &quot;value&quot;&#x27;</span></span><br><span class="line"><span class="string">&quot;It&#x27;s a long journey&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面两个都是合法的字符串。</p>
+<p>如果要在单引号字符串的内部，使用单引号，就必须在内部的单引号前面加上反斜杠，用来转义。双引号字符串内部使用双引号，也是如此。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;Did she say \&#x27;Hello\&#x27;?&#x27;</span></span><br><span class="line"><span class="comment">// &quot;Did she say &#x27;Hello&#x27;?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;Did she say \&quot;Hello\&quot;?&quot;</span></span><br><span class="line"><span class="comment">// &quot;Did she say &quot;Hello&quot;?&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>由于 HTML 语言的属性值使用双引号，所以很多项目约定 JavaScript 语言的字符串只使用单引号，本教程遵守这个约定。当然，只使用双引号也完全可以。重要的是坚持使用一种风格，不要一会使用单引号表示字符串，一会又使用双引号表示。</p>
+<p>字符串默认只能写在一行内，分成多行将会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;a</span></span><br><span class="line"><span class="string">b</span></span><br><span class="line"><span class="string">c&#x27;</span></span><br><span class="line"><span class="comment">// SyntaxError: Unexpected token ILLEGAL</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码将一个字符串分成三行，JavaScript 就会报错。</p>
+<p>如果长字符串必须分成多行，可以在每一行的尾部使用反斜杠。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longString = <span class="string">&#x27;Long \</span></span><br><span class="line"><span class="string">long \</span></span><br><span class="line"><span class="string">long \</span></span><br><span class="line"><span class="string">string&#x27;</span>;</span><br><span class="line"></span><br><span class="line">longString</span><br><span class="line"><span class="comment">// &quot;Long long long string&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码表示，加了反斜杠以后，原来写在一行的字符串，可以分成多行书写。但是，输出的时候还是单行，效果与写在同一行完全一样。注意，反斜杠的后面必须是换行符，而不能有其他字符（比如空格），否则会报错。</p>
+<p>连接运算符（<code>+</code>）可以连接多个单行字符串，将长字符串拆成多行书写，输出的时候也是单行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longString = <span class="string">&#x27;Long &#x27;</span></span><br><span class="line">  + <span class="string">&#x27;long &#x27;</span></span><br><span class="line">  + <span class="string">&#x27;long &#x27;</span></span><br><span class="line">  + <span class="string">&#x27;string&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果想输出多行字符串，有一种利用多行注释的变通方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123; <span class="comment">/*</span></span><br><span class="line"><span class="comment">line 1</span></span><br><span class="line"><span class="comment">line 2</span></span><br><span class="line"><span class="comment">line 3</span></span><br><span class="line"><span class="comment">*/</span>&#125;).<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;\n&#x27;</span>).<span class="title function_">slice</span>(<span class="number">1</span>, -<span class="number">1</span>).<span class="title function_">join</span>(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="comment">// &quot;line 1</span></span><br><span class="line"><span class="comment">// line 2</span></span><br><span class="line"><span class="comment">// line 3&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的例子中，输出的字符串就是多行。</p>
+<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>反斜杠（\）在字符串内有特殊含义，用来表示一些特殊字符，所以又称为转义符。</p>
+<p>需要用反斜杠转义的特殊字符，主要有下面这些。</p>
+<ul>
+<li><code>\0</code> ：null（<code>\u0000</code>）</li>
+<li><code>\b</code> ：后退键（<code>\u0008</code>）</li>
+<li><code>\f</code> ：换页符（<code>\u000C</code>）</li>
+<li><code>\n</code> ：换行符（<code>\u000A</code>）</li>
+<li><code>\r</code> ：回车键（<code>\u000D</code>）</li>
+<li><code>\t</code> ：制表符（<code>\u0009</code>）</li>
+<li><code>\v</code> ：垂直制表符（<code>\u000B</code>）</li>
+<li><code>\&#39;</code> ：单引号（<code>\u0027</code>）</li>
+<li><code>\&quot;</code> ：双引号（<code>\u0022</code>）</li>
+<li><code>\\</code> ：反斜杠（<code>\u005C</code>）</li>
+</ul>
+<p>上面这些字符前面加上反斜杠，都表示特殊含义。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1\n2&#x27;</span>)</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>\n</code>表示换行，输出的时候就分成了两行。</p>
+<p>反斜杠还有三种特殊用法。</p>
+<p>（1）<code>\HHH</code></p>
+<p>反斜杠后面紧跟三个八进制数（<code>000</code>到<code>377</code>），代表一个字符。<code>HHH</code>对应该字符的 Unicode 码点，比如<code>\251</code>表示版权符号。显然，这种方法只能输出256种字符。</p>
+<p>（2）<code>\xHH</code></p>
+<p><code>\x</code>后面紧跟两个十六进制数（<code>00</code>到<code>FF</code>），代表一个字符。<code>HH</code>对应该字符的 Unicode 码点，比如<code>\xA9</code>表示版权符号。这种方法也只能输出256种字符。</p>
+<p>（3）<code>\uXXXX</code></p>
+<p><code>\u</code>后面紧跟四个十六进制数（<code>0000</code>到<code>FFFF</code>），代表一个字符。<code>XXXX</code>对应该字符的 Unicode 码点，比如<code>\u00A9</code>表示版权符号。</p>
+<p>下面是这三种字符特殊写法的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;\251&#x27;</span> <span class="comment">// &quot;©&quot;</span></span><br><span class="line"><span class="string">&#x27;\xA9&#x27;</span> <span class="comment">// &quot;©&quot;</span></span><br><span class="line"><span class="string">&#x27;\u00A9&#x27;</span> <span class="comment">// &quot;©&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;\172&#x27;</span> === <span class="string">&#x27;z&#x27;</span> <span class="comment">// true</span></span><br><span class="line"><span class="string">&#x27;\x7A&#x27;</span> === <span class="string">&#x27;z&#x27;</span> <span class="comment">// true</span></span><br><span class="line"><span class="string">&#x27;\u007A&#x27;</span> === <span class="string">&#x27;z&#x27;</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>如果在非特殊字符前面使用反斜杠，则反斜杠会被省略。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;\a&#x27;</span></span><br><span class="line"><span class="comment">// &quot;a&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>a</code>是一个正常字符，前面加反斜杠没有特殊含义，反斜杠会被自动省略。</p>
+<p>如果字符串的正常内容之中，需要包含反斜杠，则反斜杠前面需要再加一个反斜杠，用来对自身转义。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Prev \\ Next&quot;</span></span><br><span class="line"><span class="comment">// &quot;Prev \ Next&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串与数组"><a href="#字符串与数组" class="headerlink" title="字符串与数组"></a>字符串与数组</h3><p>字符串可以被视为字符数组，因此可以使用数组的方括号运算符，用来返回某个位置的字符（位置编号从0开始）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">s[<span class="number">0</span>] <span class="comment">// &quot;h&quot;</span></span><br><span class="line">s[<span class="number">1</span>] <span class="comment">// &quot;e&quot;</span></span><br><span class="line">s[<span class="number">4</span>] <span class="comment">// &quot;o&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接对字符串使用方括号运算符</span></span><br><span class="line"><span class="string">&#x27;hello&#x27;</span>[<span class="number">1</span>] <span class="comment">// &quot;e&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果方括号中的数字超过字符串的长度，或者方括号中根本不是数字，则返回<code>undefined</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;abc&#x27;</span>[<span class="number">3</span>] <span class="comment">// undefined</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>[-<span class="number">1</span>] <span class="comment">// undefined</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>[<span class="string">&#x27;x&#x27;</span>] <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，字符串与数组的相似性仅此而已。实际上，无法改变字符串之中的单个字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> s[<span class="number">0</span>];</span><br><span class="line">s <span class="comment">// &quot;hello&quot;</span></span><br><span class="line"></span><br><span class="line">s[<span class="number">1</span>] = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">s <span class="comment">// &quot;hello&quot;</span></span><br><span class="line"></span><br><span class="line">s[<span class="number">5</span>] = <span class="string">&#x27;!&#x27;</span>;</span><br><span class="line">s <span class="comment">// &quot;hello&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码表示，字符串内部的单个字符无法改变和增删，这些操作会默默地失败。</p>
+<h3 id="length-属性"><a href="#length-属性" class="headerlink" title="length 属性"></a>length 属性</h3><p><code>length</code>属性返回字符串的长度，该属性也是无法改变的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">s.<span class="property">length</span> <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">s.<span class="property">length</span> = <span class="number">3</span>;</span><br><span class="line">s.<span class="property">length</span> <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">s.<span class="property">length</span> = <span class="number">7</span>;</span><br><span class="line">s.<span class="property">length</span> <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码表示字符串的<code>length</code>属性无法改变，但是不会报错。</p>
+<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><p>JavaScript 使用 Unicode 字符集。JavaScript 引擎内部，所有字符都用 Unicode 表示。</p>
+<p>JavaScript 不仅以 Unicode 储存字符，还允许直接在程序中使用 Unicode 码点表示字符，即将字符写成<code>\uxxxx</code>的形式，其中<code>xxxx</code>代表该字符的 Unicode 码点。比如，<code>\u00A9</code>代表版权符号。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;\u00A9&#x27;</span>;</span><br><span class="line">s <span class="comment">// &quot;©&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>解析代码的时候，JavaScript 会自动识别一个字符是字面形式表示，还是 Unicode 形式表示。输出给用户的时候，所有字符都会转成字面形式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f\u006F\u006F = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">foo <span class="comment">// &quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，第一行的变量名<code>foo</code>是 Unicode 形式表示，第二行是字面形式表示。JavaScript 会自动识别。</p>
+<p>我们还需要知道，每个字符在 JavaScript 内部都是以16位（即2个字节）的 UTF-16 格式储存。也就是说，JavaScript 的单位字符长度固定为16位长度，即2个字节。</p>
+<p>但是，UTF-16 有两种长度：对于码点在<code>U+0000</code>到<code>U+FFFF</code>之间的字符，长度为16位（即2个字节）；对于码点在<code>U+10000</code>到<code>U+10FFFF</code>之间的字符，长度为32位（即4个字节），而且前两个字节在<code>0xD800</code>到<code>0xDBFF</code>之间，后两个字节在<code>0xDC00</code>到<code>0xDFFF</code>之间。举例来说，码点<code>U+1D306</code>对应的字符为<code>𝌆，</code>它写成 UTF-16 就是<code>0xD834 0xDF06</code>。</p>
+<p>JavaScript 对 UTF-16 的支持是不完整的，由于历史原因，只支持两字节的字符，不支持四字节的字符。这是因为 JavaScript 第一版发布的时候，Unicode 的码点只编到<code>U+FFFF</code>，因此两字节足够表示了。后来，Unicode 纳入的字符越来越多，出现了四字节的编码。但是，JavaScript 的标准此时已经定型了，统一将字符长度限制在两字节，导致无法识别四字节的字符。上一节的那个四字节字符<code>𝌆</code>，浏览器会正确识别这是一个字符，但是 JavaScript 无法识别，会认为这是两个字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;𝌆&#x27;</span>.<span class="property">length</span> <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，JavaScript 认为<code>𝌆</code>的长度为2，而不是1。</p>
+<p>总结一下，对于码点在<code>U+10000</code>到<code>U+10FFFF</code>之间的字符，JavaScript 总是认为它们是两个字符（<code>length</code>属性为2）。所以处理的时候，必须把这一点考虑在内，也就是说，JavaScript 返回的字符串长度可能是不正确的。</p>
+<h2 id="Base64-转码"><a href="#Base64-转码" class="headerlink" title="Base64 转码"></a>Base64 转码</h2><p>有时，文本里面包含一些不可打印的符号，比如 ASCII 码0到31的符号都无法打印出来，这时可以使用 Base64 编码，将它们转成可以打印的字符。另一个场景是，有时需要以文本格式传递二进制数据，那么也可以使用 Base64 编码。</p>
+<p>所谓 Base64 就是一种编码方法，可以将任意值转成 0～9、A～Z、a-z、<code>+</code>和<code>/</code>这64个字符组成的可打印字符。使用它的主要目的，不是为了加密，而是为了不出现特殊字符，简化程序的处理。</p>
+<p>JavaScript 原生提供两个 Base64 相关的方法。</p>
+<ul>
+<li><code>btoa()</code>：任意值转为 Base64 编码</li>
+<li><code>atob()</code>：Base64 编码转为原来的值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string = <span class="string">&#x27;Hello World!&#x27;</span>;</span><br><span class="line"><span class="title function_">btoa</span>(string) <span class="comment">// &quot;SGVsbG8gV29ybGQh&quot;</span></span><br><span class="line"><span class="title function_">atob</span>(<span class="string">&#x27;SGVsbG8gV29ybGQh&#x27;</span>) <span class="comment">// &quot;Hello World!&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，这两个方法不适合非 ASCII 码的字符，会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">btoa</span>(<span class="string">&#x27;你好&#x27;</span>) <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+<p>要将非 ASCII 码字符转为 Base64 编码，必须中间插入一个转码环节，再使用这两个方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">b64Encode</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">btoa</span>(<span class="built_in">encodeURIComponent</span>(str));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">b64Decode</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>(<span class="title function_">atob</span>(str));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">b64Encode</span>(<span class="string">&#x27;你好&#x27;</span>) <span class="comment">// &quot;JUU0JUJEJUEwJUU1JUE1JUJE&quot;</span></span><br><span class="line"><span class="title function_">b64Decode</span>(<span class="string">&#x27;JUU0JUJEJUEwJUU1JUE1JUJE&#x27;</span>) <span class="comment">// &quot;你好&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li>Mathias Bynens, <a class="link"   target="_blank" rel="noopener" href="http://mathiasbynens.be/notes/javascript-encoding" >JavaScript’s internal character encoding: UCS-2 or UTF-16?<i class="fas fa-external-link-alt"></i></a></li>
+<li>Mathias Bynens, <a class="link"   target="_blank" rel="noopener" href="http://mathiasbynens.be/notes/javascript-unicode" >JavaScript has a Unicode problem<i class="fas fa-external-link-alt"></i></a></li>
+<li>Mozilla Developer Network, <a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Window.btoa" >Window.btoa<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<hr>
+<p>未完待续</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/JavaScript/">#JavaScript</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/08/18/js006/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">从零开始学JavaScript（006 数值，树脂666）</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89"><span class="nav-text">转义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E7%BB%84"><span class="nav-text">字符串与数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#length-%E5%B1%9E%E6%80%A7"><span class="nav-text">length 属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-text">字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Base64-%E8%BD%AC%E7%A0%81"><span class="nav-text">Base64 转码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-text">参考链接</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2022</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">小师丈</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    赣ICP备2023007741号
+                </a>
+            </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://cloud.tencent.com/">
+                
+                    本站由 <span class="tooltip" data-content="腾讯云"><img src="/images/deploy-provider/tencent_cloud.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
