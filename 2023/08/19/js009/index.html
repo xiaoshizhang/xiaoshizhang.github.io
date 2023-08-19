@@ -172,7 +172,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-08-19 11:39:34</span>
+        <span class="pc">2023-08-19 14:21:10</span>
     </span>
     
     
@@ -244,7 +244,6 @@
 <p><strong>（3）Function 构造函数</strong></p>
 <p>第三种声明函数的方式是<code>Function</code>构造函数。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> add = <span class="keyword">new</span> <span class="title class_">Function</span>(</span><br><span class="line">  <span class="string">&#x27;x&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;y&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;return x + y&#x27;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x, y</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>上面代码中，<code>Function</code>构造函数接受三个参数，除了最后一个参数是<code>add</code>函数的“函数体”，其他参数都是<code>add</code>函数的参数。</p>
 <p>你可以传递任意数量的参数给<code>Function</code>构造函数，只有最后一个参数会被当做函数体，如果只有一个参数，该参数就是函数体。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> <span class="title class_">Function</span>(</span><br><span class="line">  <span class="string">&#x27;return &quot;hello world&quot;;&#x27;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
