@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="小师丈">
+    
+    <title>
+        
+            从零开始学JavaScript（011 算术运算符） |
+        
+        Shizhang&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/かき氷-(1).3nlbell2l0s0.webp">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"xiaoshizhang.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true},"style":{"primary_color":"#2f2f35","logo":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/かき氷-(1).3nlbell2l0s0.webp","favicon":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/かき氷-(1).3nlbell2l0s0.webp","avatar":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/81e0cd6bea74c98b6ad24051d18f0b5d_1.7dwl6x6nmww0.webp","font_size":"15px","font_family":"STHeiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/wallhaven-zy5jyy-(1).2863f7y14ocg.webp","description":"失败总是贯穿人生的始终...","font_color":"#c27c88","hitokoto":true},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":"BmYr9Z65RyUJbvaDCcggcX8K-gzGzoHsz","appkey":"2w1e5uG9qbJVmDTNNrCaWimf","server_urls":"https://bmyr9z65.lc-cn-n1-shared.com","placeholder":"发一条友善的评论~"},"gitalk":{"github_id":"xiaoshizhang","github_admins":null,"repository":"comments","client_id":"45fd382b5ceb7efb0ed0","client_secret":"7c37f7a944e4a6c12e27384a16243ca4798150fd","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["炼气","筑基","结丹","元婴","化神"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/%E3%81%8B%E3%81%8D%E6%B0%B7-(1).3nlbell2l0s0.webp">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Shizhang&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">从零开始学JavaScript（011 算术运算符）</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/81e0cd6bea74c98b6ad24051d18f0b5d_1.7dwl6x6nmww0.webp">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">小师丈</span>
+                            
+                                <span class="author-label">结丹</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-08-21 14:33:33</span>
+        <span class="mobile">2023-08-21 14:33</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-08-21 14:51:43</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/JavaScript/">JavaScript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.2k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/wallhaven-6o1pl7-(1)-(1).46yjgf2id300.webp"
+                      alt="wallhaven-6o1pl7-(1)-(1)"
+                ><br>运算符是处理数据的基本方法，用来从现有的值得到新的值。JavaScript 提供了多种运算符，覆盖了所有主要的运算。</p>
+<span id="more"></span>
+<h1 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>JavaScript 共提供10个算术运算符，用来完成基本的算术运算。</p>
+<ul>
+<li><strong>加法运算符</strong>：<code>x + y</code></li>
+<li><strong>减法运算符</strong>： <code>x - y</code></li>
+<li><strong>乘法运算符</strong>： <code>x * y</code></li>
+<li><strong>除法运算符</strong>：<code>x / y</code></li>
+<li><strong>指数运算符</strong>：<code>x ** y</code></li>
+<li><strong>余数运算符</strong>：<code>x % y</code></li>
+<li><strong>自增运算符</strong>：<code>++x</code> 或者 <code>x++</code></li>
+<li><strong>自减运算符</strong>：<code>--x</code> 或者 <code>x--</code></li>
+<li><strong>数值运算符</strong>： <code>+x</code></li>
+<li><strong>负数值运算符</strong>：<code>-x</code></li>
+</ul>
+<p>减法、乘法、除法运算法比较单纯，就是执行相应的数学运算。下面介绍其他几个算术运算符，重点是加法运算符。</p>
+<h2 id="加法运算符"><a href="#加法运算符" class="headerlink" title="加法运算符"></a>加法运算符</h2><h3 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h3><p>加法运算符（<code>+</code>）是最常见的运算符，用来求两个数值的和。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + <span class="number">1</span> <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>JavaScript 允许非数值的相加。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span> + <span class="literal">true</span> <span class="comment">// 2</span></span><br><span class="line"><span class="number">1</span> + <span class="literal">true</span> <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，第一行是两个布尔值相加，第二行是数值与布尔值相加。这两种情况，布尔值都会自动转成数值，然后再相加。</p>
+<p>比较特殊的是，如果是两个字符串相加，这时加法运算符会变成连接运算符，返回一个新的字符串，将两个原字符串连接在一起。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;a&#x27;</span> + <span class="string">&#x27;bc&#x27;</span> <span class="comment">// &quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果一个运算子是字符串，另一个运算子是非字符串，这时非字符串会转成字符串，再连接在一起。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + <span class="string">&#x27;a&#x27;</span> <span class="comment">// &quot;1a&quot;</span></span><br><span class="line"><span class="literal">false</span> + <span class="string">&#x27;a&#x27;</span> <span class="comment">// &quot;falsea&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>加法运算符是在运行时决定，到底是执行相加，还是执行连接。也就是说，运算子的不同，导致了不同的语法行为，这种现象称为“重载”（overload）。由于加法运算符存在重载，可能执行两种运算，使用的时候必须很小心。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;3&#x27;</span> + <span class="number">4</span> + <span class="number">5</span> <span class="comment">// &quot;345&quot;</span></span><br><span class="line"><span class="number">3</span> + <span class="number">4</span> + <span class="string">&#x27;5&#x27;</span> <span class="comment">// &quot;75&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，由于从左到右的运算次序，字符串的位置不同会导致不同的结果。</p>
+<p>除了加法运算符，其他算术运算符（比如减法、除法和乘法）都不会发生重载。它们的规则是：所有运算子一律转为数值，再进行相应的数学运算。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> - <span class="string">&#x27;2&#x27;</span> <span class="comment">// -1</span></span><br><span class="line"><span class="number">1</span> * <span class="string">&#x27;2&#x27;</span> <span class="comment">// 2</span></span><br><span class="line"><span class="number">1</span> / <span class="string">&#x27;2&#x27;</span> <span class="comment">// 0.5</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，减法、除法和乘法运算符，都是将字符串自动转为数值，然后再运算。</p>
+<h3 id="对象的相加"><a href="#对象的相加" class="headerlink" title="对象的相加"></a>对象的相加</h3><p>如果运算子是对象，必须先转成原始类型的值，然后再相加。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">p</span>: <span class="number">1</span> &#125;;</span><br><span class="line">obj + <span class="number">2</span> <span class="comment">// &quot;[object Object]2&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，对象<code>obj</code>转成原始类型的值是<code>[object Object]</code>，再加<code>2</code>就得到了上面的结果。</p>
+<p>对象转成原始类型的值，规则如下。</p>
+<p>首先，自动调用对象的<code>valueOf</code>方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">p</span>: <span class="number">1</span> &#125;;</span><br><span class="line">obj.<span class="title function_">valueOf</span>() <span class="comment">// &#123; p: 1 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>一般来说，对象的<code>valueOf</code>方法总是返回对象自身，这时再自动调用对象的<code>toString</code>方法，将其转为字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">p</span>: <span class="number">1</span> &#125;;</span><br><span class="line">obj.<span class="title function_">valueOf</span>().<span class="title function_">toString</span>() <span class="comment">// &quot;[object Object]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>对象的<code>toString</code>方法默认返回<code>[object Object]</code>，所以就得到了最前面那个例子的结果。</p>
+<p>知道了这个规则以后，就可以自己定义<code>valueOf</code>方法或<code>toString</code>方法，得到想要的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">valueOf</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj + <span class="number">2</span> <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，我们定义<code>obj</code>对象的<code>valueOf</code>方法返回<code>1</code>，于是<code>obj + 2</code>就得到了<code>3</code>。这个例子中，由于<code>valueOf</code>方法直接返回一个原始类型的值，所以不再调用<code>toString</code>方法。</p>
+<p>下面是自定义<code>toString</code>方法的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">toString</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj + <span class="number">2</span> <span class="comment">// &quot;hello2&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，对象<code>obj</code>的<code>toString</code>方法返回字符串<code>hello</code>。前面说过，只要有一个运算子是字符串，加法运算符就变成连接运算符，返回连接后的字符串。</p>
+<p>这里有一个特例，如果运算子是一个<code>Date</code>对象的实例，那么会优先执行<code>toString</code>方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">obj.<span class="property">valueOf</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;;</span><br><span class="line">obj.<span class="property">toString</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123; <span class="keyword">return</span> <span class="string">&#x27;hello&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line">obj + <span class="number">2</span> <span class="comment">// &quot;hello2&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，对象<code>obj</code>是一个<code>Date</code>对象的实例，并且自定义了<code>valueOf</code>方法和<code>toString</code>方法，结果<code>toString</code>方法优先执行。</p>
+<h2 id="余数运算符"><a href="#余数运算符" class="headerlink" title="余数运算符"></a>余数运算符</h2><p>余数运算符（<code>%</code>）返回前一个运算子被后一个运算子除，所得的余数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">12</span> % <span class="number">5</span> <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，运算结果的正负号由第一个运算子的正负号决定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-<span class="number">1</span> % <span class="number">2</span> <span class="comment">// -1</span></span><br><span class="line"><span class="number">1</span> % -<span class="number">2</span> <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>所以，为了得到负数的正确余数值，可以先使用绝对值函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误的写法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isOdd</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> n % <span class="number">2</span> === <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">isOdd</span>(-<span class="number">5</span>) <span class="comment">// false</span></span><br><span class="line"><span class="title function_">isOdd</span>(-<span class="number">4</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确的写法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isOdd</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">abs</span>(n % <span class="number">2</span>) === <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">isOdd</span>(-<span class="number">5</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title function_">isOdd</span>(-<span class="number">4</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>余数运算符还可以用于浮点数的运算。但是，由于浮点数不是精确的值，无法得到完全准确的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6.5</span> % <span class="number">2.1</span></span><br><span class="line"><span class="comment">// 0.19999999999999973</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="自增和自减运算符"><a href="#自增和自减运算符" class="headerlink" title="自增和自减运算符"></a>自增和自减运算符</h2><p>自增和自减运算符，是一元运算符，只需要一个运算子。它们的作用是将运算子首先转为数值，然后加上1或者减去1。它们会修改原始变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">++x <span class="comment">// 2</span></span><br><span class="line">x <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">--x <span class="comment">// 1</span></span><br><span class="line">x <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码的变量<code>x</code>自增后，返回<code>2</code>，再进行自减，返回<code>1</code>。这两种情况都会使得，原始变量<code>x</code>的值发生改变。</p>
+<p>运算之后，变量的值发生变化，这种效应叫做运算的副作用（side effect）。自增和自减运算符是仅有的两个具有副作用的运算符，其他运算符都不会改变变量的值。</p>
+<p>自增和自减运算符有一个需要注意的地方，就是放在变量之后，会先返回变量操作前的值，再进行自增&#x2F;自减操作；放在变量之前，会先进行自增&#x2F;自减操作，再返回变量操作后的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">x++ <span class="comment">// 1</span></span><br><span class="line">++y <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>x</code>是先返回当前值，然后自增，所以得到<code>1</code>；<code>y</code>是先自增，然后返回新的值，所以得到<code>2</code>。</p>
+<h2 id="数值运算符，负数值运算符"><a href="#数值运算符，负数值运算符" class="headerlink" title="数值运算符，负数值运算符"></a>数值运算符，负数值运算符</h2><p>数值运算符（<code>+</code>）同样使用加号，但它是一元运算符（只需要一个操作数），而加法运算符是二元运算符（需要两个操作数）。</p>
+<p>数值运算符的作用在于可以将任何值转为数值（与<code>Number</code>函数的作用相同）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+<span class="literal">true</span> <span class="comment">// 1</span></span><br><span class="line">+[] <span class="comment">// 0</span></span><br><span class="line">+&#123;&#125; <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码表示，非数值经过数值运算符以后，都变成了数值（最后一行<code>NaN</code>也是数值）。具体的类型转换规则，参见《数据类型转换》一章。</p>
+<p>负数值运算符（<code>-</code>），也同样具有将一个值转为数值的功能，只不过得到的值正负相反。连用两个负数值运算符，等同于数值运算符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">-x <span class="comment">// -1</span></span><br><span class="line">-(-x) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码最后一行的圆括号不可少，否则会变成自减运算符。</p>
+<p>数值运算符号和负数值运算符，都会返回一个新的值，而不会改变原始变量的值。</p>
+<h2 id="指数运算符"><a href="#指数运算符" class="headerlink" title="指数运算符"></a>指数运算符</h2><p>指数运算符（<code>**</code>）完成指数运算，前一个运算子是底数，后一个运算子是指数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">4</span> <span class="comment">// 16</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，指数运算符是右结合，而不是左结合。即多个指数运算符连用时，先进行最右边的计算。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 相当于 2 ** (3 ** 2)</span></span><br><span class="line"><span class="number">2</span> ** <span class="number">3</span> ** <span class="number">2</span></span><br><span class="line"><span class="comment">// 512</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，由于指数运算符是右结合，所以先计算第二个指数运算符，而不是第一个。</p>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><p>赋值运算符（Assignment Operators）用于给变量赋值。</p>
+<p>最常见的赋值运算符，当然就是等号（<code>=</code>）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将 1 赋值给变量 x</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将变量 y 的值赋值给变量 x</span></span><br><span class="line"><span class="keyword">var</span> x = y;</span><br></pre></td></tr></table></figure>
+
+<p>赋值运算符还可以与其他运算符结合，形成变体。下面是与算术运算符的结合。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 等同于 x = x + y</span></span><br><span class="line">x += y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x - y</span></span><br><span class="line">x -= y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x * y</span></span><br><span class="line">x *= y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x / y</span></span><br><span class="line">x /= y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x % y</span></span><br><span class="line">x %= y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x ** y</span></span><br><span class="line">x **= y</span><br></pre></td></tr></table></figure>
+
+<p>下面是与位运算符的结合（关于位运算符，请见后文的介绍）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 等同于 x = x &gt;&gt; y</span></span><br><span class="line">x &gt;&gt;= y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x &lt;&lt; y</span></span><br><span class="line">x &lt;&lt;= y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x &gt;&gt;&gt; y</span></span><br><span class="line">x &gt;&gt;&gt;= y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x &amp; y</span></span><br><span class="line">x &amp;= y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x | y</span></span><br><span class="line">x |= y</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 x = x ^ y</span></span><br><span class="line">x ^= y</span><br></pre></td></tr></table></figure>
+
+<p>这些复合的赋值运算符，都是先进行指定运算，然后将得到值返回给左边的变量。</p>
+<hr>
+<p>未完待续</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/JavaScript/">#JavaScript</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/08/21/js012/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">从零开始学JavaScript（012 比较运算符）</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/08/19/js010/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">从零开始学JavaScript（010 数组）</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">算术运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">加法运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99"><span class="nav-text">基本规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%9B%B8%E5%8A%A0"><span class="nav-text">对象的相加</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%99%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">余数运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%A2%9E%E5%92%8C%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">自增和自减运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E8%B4%9F%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">数值运算符，负数值运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">指数运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">赋值运算符</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2022</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">小师丈</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    赣ICP备2023007741号
+                </a>
+            </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://cloud.tencent.com/">
+                
+                    本站由 <span class="tooltip" data-content="腾讯云"><img src="/images/deploy-provider/tencent_cloud.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
