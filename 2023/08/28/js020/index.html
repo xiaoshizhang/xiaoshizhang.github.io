@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="小师丈">
+    
+    <title>
+        
+            从零开始学JavaScript（020 Object 对象） |
+        
+        Shizhang&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/かき氷-(1).3nlbell2l0s0.webp">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"xiaoshizhang.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true},"style":{"primary_color":"#2f2f35","logo":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/かき氷-(1).3nlbell2l0s0.webp","favicon":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/かき氷-(1).3nlbell2l0s0.webp","avatar":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/81e0cd6bea74c98b6ad24051d18f0b5d_1.7dwl6x6nmww0.webp","font_size":"15px","font_family":"STHeiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/wallhaven-zy5jyy-(1).2863f7y14ocg.webp","description":"失败总是贯穿人生的始终...","font_color":"#c27c88","hitokoto":true},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":"BmYr9Z65RyUJbvaDCcggcX8K-gzGzoHsz","appkey":"2w1e5uG9qbJVmDTNNrCaWimf","server_urls":"https://bmyr9z65.lc-cn-n1-shared.com","placeholder":"发一条友善的评论~"},"gitalk":{"github_id":"xiaoshizhang","github_admins":null,"repository":"comments","client_id":"45fd382b5ceb7efb0ed0","client_secret":"7c37f7a944e4a6c12e27384a16243ca4798150fd","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["炼气","筑基","结丹","元婴","化神"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/%E3%81%8B%E3%81%8D%E6%B0%B7-(1).3nlbell2l0s0.webp">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Shizhang&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">从零开始学JavaScript（020 Object 对象）</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/81e0cd6bea74c98b6ad24051d18f0b5d_1.7dwl6x6nmww0.webp">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">小师丈</span>
+                            
+                                <span class="author-label">结丹</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-08-28 10:41:21</span>
+        <span class="mobile">2023-08-28 10:41</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-08-28 10:42:41</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/JavaScript/">JavaScript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.3k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/xiaoshizhang/picx-images-hosting@master/wallhaven-6o1pl7-(1)-(1).46yjgf2id300.webp"
+                      alt="wallhaven-6o1pl7-(1)-(1)"
+                ><br>JavaScript 原生提供Object对象（注意起首的O是大写），本章介绍该对象原生的各种方法。</p>
+<span id="more"></span>
+<h1 id="Object-对象"><a href="#Object-对象" class="headerlink" title="Object 对象"></a>Object 对象</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>JavaScript 的所有其他对象都继承自<code>Object</code>对象，即那些对象都是<code>Object</code>的实例。</p>
+<p><code>Object</code>对象的原生方法分成两类：<code>Object</code>本身的方法与<code>Object</code>的实例方法。</p>
+<p><strong>（1）<code>Object</code>对象本身的方法</strong></p>
+<p>所谓“本身的方法”就是直接定义在<code>Object</code>对象的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property">print</span> = <span class="keyword">function</span> (<span class="params">o</span>) &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(o) &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>print</code>方法就是直接定义在<code>Object</code>对象上。</p>
+<p><strong>（2）<code>Object</code>的实例方法</strong></p>
+<p>所谓实例方法就是定义在<code>Object</code>原型对象<code>Object.prototype</code>上的方法。它可以被<code>Object</code>实例直接使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">print</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">obj.<span class="title function_">print</span>() <span class="comment">// Object</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>Object.prototype</code>定义了一个<code>print</code>方法，然后生成一个<code>Object</code>的实例<code>obj</code>。<code>obj</code>直接继承了<code>Object.prototype</code>的属性和方法，可以直接使用<code>obj.print</code>调用<code>print</code>方法。也就是说，<code>obj</code>对象的<code>print</code>方法实质上就是调用<code>Object.prototype.print</code>方法。</p>
+<p>关于原型对象<code>object.prototype</code>的详细解释，参见《面向对象编程》章节。这里只要知道，凡是定义在<code>Object.prototype</code>对象上面的属性和方法，将被所有实例对象共享就可以了。</p>
+<p>以下先介绍<code>Object</code>作为函数的用法，然后再介绍<code>Object</code>对象的原生方法，分成对象自身的方法（又称为“静态方法”）和实例方法两部分。</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object()"></a>Object()</h2><p><code>Object</code>本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。</p>
+<p>如果参数为空（或者为<code>undefined</code>和<code>null</code>），<code>Object()</code>返回一个空对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>();</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(<span class="literal">undefined</span>);</span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">Object</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码的含义，是将<code>undefined</code>和<code>null</code>转为对象，结果得到了一个空对象<code>obj</code>。</p>
+<p><code>instanceof</code>运算符用来验证，一个对象是否为指定的构造函数的实例。<code>obj instanceof Object</code>返回<code>true</code>，就表示<code>obj</code>对象是<code>Object</code>的实例。</p>
+<p>如果参数是原始类型的值，<code>Object</code>方法将其转为对应的包装对象的实例（参见《原始类型的包装对象》一章）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(<span class="number">1</span>);</span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">Object</span> <span class="comment">// true</span></span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">Number</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">Object</span> <span class="comment">// true</span></span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">String</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(<span class="literal">true</span>);</span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">Object</span> <span class="comment">// true</span></span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">Boolean</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>Object</code>函数的参数是各种原始类型的值，转换成对象就是原始类型值对应的包装对象。</p>
+<p>如果<code>Object</code>方法的参数是一个对象，它总是返回该对象，即不用转换。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(arr); <span class="comment">// 返回原数组</span></span><br><span class="line">obj === arr <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> value = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(value) <span class="comment">// 返回原对象</span></span><br><span class="line">obj === value <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(fn); <span class="comment">// 返回原函数</span></span><br><span class="line">obj === fn <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>利用这一点，可以写一个判断变量是否为对象的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isObject</span>(<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> value === <span class="title class_">Object</span>(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isObject</span>([]) <span class="comment">// true</span></span><br><span class="line"><span class="title function_">isObject</span>(<span class="literal">true</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Object-构造函数"><a href="#Object-构造函数" class="headerlink" title="Object 构造函数"></a>Object 构造函数</h2><p><code>Object</code>不仅可以当作工具函数使用，还可以当作构造函数使用，即前面可以使用<code>new</code>命令。</p>
+<p><code>Object</code>构造函数的首要用途，是直接通过它来生成新对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，通过<code>var obj = new Object()</code>的写法生成新对象，与字面量的写法<code>var obj = &#123;&#125;</code>是等价的。或者说，后者只是前者的一种简便写法。</p>
+</blockquote>
+<p><code>Object</code>构造函数的用法与工具方法很相似，几乎一模一样。使用时，可以接受一个参数，如果该参数是一个对象，则直接返回这个对象；如果是一个原始类型的值，则返回该值对应的包装对象（详见《包装对象》一章）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = <span class="keyword">new</span> <span class="title class_">Object</span>(o1);</span><br><span class="line">o1 === o2 <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>(<span class="number">123</span>);</span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">Number</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>虽然用法相似，但是<code>Object(value)</code>与<code>new Object(value)</code>两者的语义是不同的，<code>Object(value)</code>表示将<code>value</code>转成一个对象，<code>new Object(value)</code>则表示新生成一个对象，它的值是<code>value</code>。</p>
+<h2 id="Object-的静态方法"><a href="#Object-的静态方法" class="headerlink" title="Object 的静态方法"></a>Object 的静态方法</h2><p>所谓“静态方法”，是指部署在<code>Object</code>对象自身的方法。</p>
+<h3 id="Object-keys-，Object-getOwnPropertyNames"><a href="#Object-keys-，Object-getOwnPropertyNames" class="headerlink" title="Object.keys()，Object.getOwnPropertyNames()"></a>Object.keys()，Object.getOwnPropertyNames()</h3><p><code>Object.keys</code>方法和<code>Object.getOwnPropertyNames</code>方法都用来遍历对象的属性。</p>
+<p><code>Object.keys</code>方法的参数是一个对象，返回一个数组。该数组的成员都是该对象自身的（而不是继承的）所有属性名。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">p1</span>: <span class="number">123</span>,</span><br><span class="line">  <span class="attr">p2</span>: <span class="number">456</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(obj) <span class="comment">// [&quot;p1&quot;, &quot;p2&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Object.getOwnPropertyNames</code>方法与<code>Object.keys</code>类似，也是接受一个对象作为参数，返回一个数组，包含了该对象自身的所有属性名。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">p1</span>: <span class="number">123</span>,</span><br><span class="line">  <span class="attr">p2</span>: <span class="number">456</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj) <span class="comment">// [&quot;p1&quot;, &quot;p2&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>对于一般的对象来说，<code>Object.keys()</code>和<code>Object.getOwnPropertyNames()</code>返回的结果是一样的。只有涉及不可枚举属性时，才会有不一样的结果。<code>Object.keys</code>方法只返回可枚举的属性（详见《对象属性的描述对象》一章），<code>Object.getOwnPropertyNames</code>方法还返回不可枚举的属性名。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;World&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(a) <span class="comment">// [&quot;0&quot;, &quot;1&quot;]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(a) <span class="comment">// [&quot;0&quot;, &quot;1&quot;, &quot;length&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，数组的<code>length</code>属性是不可枚举的属性，所以只出现在<code>Object.getOwnPropertyNames</code>方法的返回结果中。</p>
+<p>由于 JavaScript 没有提供计算对象属性个数的方法，所以可以用这两个方法代替。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">p1</span>: <span class="number">123</span>,</span><br><span class="line">  <span class="attr">p2</span>: <span class="number">456</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="property">length</span> <span class="comment">// 2</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj).<span class="property">length</span> <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>一般情况下，几乎总是使用<code>Object.keys</code>方法，遍历对象的属性。</p>
+<h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><p>除了上面提到的两个方法，<code>Object</code>还有不少其他静态方法，将在后文逐一详细介绍。</p>
+<p><strong>（1）对象属性模型的相关方法</strong></p>
+<ul>
+<li><code>Object.getOwnPropertyDescriptor()</code>：获取某个属性的描述对象。</li>
+<li><code>Object.defineProperty()</code>：通过描述对象，定义某个属性。</li>
+<li><code>Object.defineProperties()</code>：通过描述对象，定义多个属性。</li>
+</ul>
+<p><strong>（2）控制对象状态的方法</strong></p>
+<ul>
+<li><code>Object.preventExtensions()</code>：防止对象扩展。</li>
+<li><code>Object.isExtensible()</code>：判断对象是否可扩展。</li>
+<li><code>Object.seal()</code>：禁止对象配置。</li>
+<li><code>Object.isSealed()</code>：判断一个对象是否可配置。</li>
+<li><code>Object.freeze()</code>：冻结一个对象。</li>
+<li><code>Object.isFrozen()</code>：判断一个对象是否被冻结。</li>
+</ul>
+<p><strong>（3）原型链相关方法</strong></p>
+<ul>
+<li><code>Object.create()</code>：该方法可以指定原型对象和属性，返回一个新的对象。</li>
+<li><code>Object.getPrototypeOf()</code>：获取对象的<code>Prototype</code>对象。</li>
+</ul>
+<h2 id="Object-的实例方法"><a href="#Object-的实例方法" class="headerlink" title="Object 的实例方法"></a>Object 的实例方法</h2><p>除了静态方法，还有不少方法定义在<code>Object.prototype</code>对象。它们称为实例方法，所有<code>Object</code>的实例对象都继承了这些方法。</p>
+<p><code>Object</code>实例对象的方法，主要有以下六个。</p>
+<ul>
+<li><code>Object.prototype.valueOf()</code>：返回当前对象对应的值。</li>
+<li><code>Object.prototype.toString()</code>：返回当前对象对应的字符串形式。</li>
+<li><code>Object.prototype.toLocaleString()</code>：返回当前对象对应的本地字符串形式。</li>
+<li><code>Object.prototype.hasOwnProperty()</code>：判断某个属性是否为当前对象自身的属性，还是继承自原型对象的属性。</li>
+<li><code>Object.prototype.isPrototypeOf()</code>：判断当前对象是否为另一个对象的原型。</li>
+<li><code>Object.prototype.propertyIsEnumerable()</code>：判断某个属性是否可枚举。</li>
+</ul>
+<p>本节介绍前四个方法，另外两个方法将在后文相关章节介绍。</p>
+<h3 id="Object-prototype-valueOf"><a href="#Object-prototype-valueOf" class="headerlink" title="Object.prototype.valueOf()"></a>Object.prototype.valueOf()</h3><p><code>valueOf</code>方法的作用是返回一个对象的“值”，默认情况下返回对象本身。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">obj.<span class="title function_">valueOf</span>() === obj <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码比较<code>obj.valueOf()</code>与<code>obj</code>本身，两者是一样的。</p>
+<p><code>valueOf</code>方法的主要用途是，JavaScript 自动类型转换时会默认调用这个方法（详见《数据类型转换》一章）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"><span class="number">1</span> + obj <span class="comment">// &quot;1[object Object]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码将对象<code>obj</code>与数字<code>1</code>相加，这时 JavaScript 就会默认调用<code>valueOf()</code>方法，求出<code>obj</code>的值再与<code>1</code>相加。所以，如果自定义<code>valueOf</code>方法，就可以得到想要的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">obj.<span class="property">valueOf</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> + obj <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码自定义了<code>obj</code>对象的<code>valueOf</code>方法，于是<code>1 + obj</code>就得到了<code>3</code>。这种方法就相当于用自定义的<code>obj.valueOf</code>，覆盖<code>Object.prototype.valueOf</code>。</p>
+<h3 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString()"></a>Object.prototype.toString()</h3><p><code>toString</code>方法的作用是返回一个对象的字符串形式，默认情况下返回类型字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">o1.<span class="title function_">toString</span>() <span class="comment">// &quot;[object Object]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o2 = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</span><br><span class="line">o2.<span class="title function_">toString</span>() <span class="comment">// &quot;[object Object]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码表示，对于一个对象调用<code>toString</code>方法，会返回字符串<code>[object Object]</code>，该字符串说明对象的类型。</p>
+<p>字符串<code>[object Object]</code>本身没有太大的用处，但是通过自定义<code>toString</code>方法，可以让对象在自动类型转换时，得到想要的字符串形式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"></span><br><span class="line">obj.<span class="property">toString</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj + <span class="string">&#x27; &#x27;</span> + <span class="string">&#x27;world&#x27;</span> <span class="comment">// &quot;hello world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码表示，当对象用于字符串加法时，会自动调用<code>toString</code>方法。由于自定义了<code>toString</code>方法，所以返回字符串<code>hello world</code>。</p>
+<p>数组、字符串、函数、Date 对象都分别部署了自定义的<code>toString</code>方法，覆盖了<code>Object.prototype.toString</code>方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].<span class="title function_">toString</span>() <span class="comment">// &quot;1,2,3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;123&#x27;</span>.<span class="title function_">toString</span>() <span class="comment">// &quot;123&quot;</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">123</span>;</span><br><span class="line">&#125;).<span class="title function_">toString</span>()</span><br><span class="line"><span class="comment">// &quot;function () &#123;</span></span><br><span class="line"><span class="comment">//   return 123;</span></span><br><span class="line"><span class="comment">// &#125;&quot;</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">new</span> <span class="title class_">Date</span>()).<span class="title function_">toString</span>()</span><br><span class="line"><span class="comment">// &quot;Tue May 10 2016 09:11:31 GMT+0800 (CST)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，数组、字符串、函数、Date 对象调用<code>toString</code>方法，并不会返回<code>[object Object]</code>，因为它们都自定义了<code>toString</code>方法，覆盖原始方法。</p>
+<h3 id="toString-的应用：判断数据类型"><a href="#toString-的应用：判断数据类型" class="headerlink" title="toString() 的应用：判断数据类型"></a>toString() 的应用：判断数据类型</h3><p><code>Object.prototype.toString</code>方法返回对象的类型字符串，因此可以用来判断一个值的类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.<span class="title function_">toString</span>() <span class="comment">// &quot;[object Object]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码调用空对象的<code>toString</code>方法，结果返回一个字符串<code>object Object</code>，其中第二个<code>Object</code>表示该值的构造函数。这是一个十分有用的判断数据类型的方法。</p>
+<p>由于实例对象可能会自定义<code>toString</code>方法，覆盖掉<code>Object.prototype.toString</code>方法，所以为了得到类型字符串，最好直接使用<code>Object.prototype.toString</code>方法。通过函数的<code>call</code>方法，可以在任意值上调用这个方法，帮助我们判断这个值的类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(value)</span><br></pre></td></tr></table></figure>
+
+<p>上面代码表示对<code>value</code>这个值调用<code>Object.prototype.toString</code>方法。</p>
+<p>不同数据类型的<code>Object.prototype.toString</code>方法返回值如下。</p>
+<ul>
+<li>数值：返回<code>[object Number]</code>。</li>
+<li>字符串：返回<code>[object String]</code>。</li>
+<li>布尔值：返回<code>[object Boolean]</code>。</li>
+<li>undefined：返回<code>[object Undefined]</code>。</li>
+<li>null：返回<code>[object Null]</code>。</li>
+<li>数组：返回<code>[object Array]</code>。</li>
+<li>arguments 对象：返回<code>[object Arguments]</code>。</li>
+<li>函数：返回<code>[object Function]</code>。</li>
+<li>Error 对象：返回<code>[object Error]</code>。</li>
+<li>Date 对象：返回<code>[object Date]</code>。</li>
+<li>RegExp 对象：返回<code>[object RegExp]</code>。</li>
+<li>其他对象：返回<code>[object Object]</code>。</li>
+</ul>
+<p>这就是说，<code>Object.prototype.toString</code>可以看出一个值到底是什么类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="number">2</span>) <span class="comment">// &quot;[object Number]&quot;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="string">&#x27;&#x27;</span>) <span class="comment">// &quot;[object String]&quot;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="literal">true</span>) <span class="comment">// &quot;[object Boolean]&quot;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="literal">undefined</span>) <span class="comment">// &quot;[object Undefined]&quot;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="literal">null</span>) <span class="comment">// &quot;[object Null]&quot;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="title class_">Math</span>) <span class="comment">// &quot;[object Math]&quot;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(&#123;&#125;) <span class="comment">// &quot;[object Object]&quot;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>([]) <span class="comment">// &quot;[object Array]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>利用这个特性，可以写出一个比<code>typeof</code>运算符更准确的类型判断函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> type = <span class="keyword">function</span> (<span class="params">o</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> s = <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(o);</span><br><span class="line">  <span class="keyword">return</span> s.<span class="title function_">match</span>(<span class="regexp">/\[object (.*?)\]/</span>)[<span class="number">1</span>].<span class="title function_">toLowerCase</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">type</span>(&#123;&#125;); <span class="comment">// &quot;object&quot;</span></span><br><span class="line"><span class="title function_">type</span>([]); <span class="comment">// &quot;array&quot;</span></span><br><span class="line"><span class="title function_">type</span>(<span class="number">5</span>); <span class="comment">// &quot;number&quot;</span></span><br><span class="line"><span class="title function_">type</span>(<span class="literal">null</span>); <span class="comment">// &quot;null&quot;</span></span><br><span class="line"><span class="title function_">type</span>(); <span class="comment">// &quot;undefined&quot;</span></span><br><span class="line"><span class="title function_">type</span>(<span class="regexp">/abcd/</span>); <span class="comment">// &quot;regex&quot;</span></span><br><span class="line"><span class="title function_">type</span>(<span class="keyword">new</span> <span class="title class_">Date</span>()); <span class="comment">// &quot;date&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在上面这个<code>type</code>函数的基础上，还可以加上专门判断某种类型数据的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> type = <span class="keyword">function</span> (<span class="params">o</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> s = <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(o);</span><br><span class="line">  <span class="keyword">return</span> s.<span class="title function_">match</span>(<span class="regexp">/\[object (.*?)\]/</span>)[<span class="number">1</span>].<span class="title function_">toLowerCase</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;Null&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Undefined&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Object&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Array&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;String&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Number&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Boolean&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Function&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;RegExp&#x27;</span></span><br><span class="line">].<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">t</span>) &#123;</span><br><span class="line">  type[<span class="string">&#x27;is&#x27;</span> + t] = <span class="keyword">function</span> (<span class="params">o</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">type</span>(o) === t.<span class="title function_">toLowerCase</span>();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">type.<span class="title function_">isObject</span>(&#123;&#125;) <span class="comment">// true</span></span><br><span class="line">type.<span class="title function_">isNumber</span>(<span class="title class_">NaN</span>) <span class="comment">// true</span></span><br><span class="line">type.<span class="title function_">isRegExp</span>(<span class="regexp">/abc/</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Object-prototype-toLocaleString"><a href="#Object-prototype-toLocaleString" class="headerlink" title="Object.prototype.toLocaleString()"></a>Object.prototype.toLocaleString()</h3><p><code>Object.prototype.toLocaleString</code>方法与<code>toString</code>的返回结果相同，也是返回一个值的字符串形式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.<span class="title function_">toString</span>(obj) <span class="comment">// &quot;[object Object]&quot;</span></span><br><span class="line">obj.<span class="title function_">toLocaleString</span>(obj) <span class="comment">// &quot;[object Object]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个方法的主要作用是留出一个接口，让各种不同的对象实现自己版本的<code>toLocaleString</code>，用来返回针对某些地域的特定的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">toString</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Henry Norman Bethune&#x27;</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">toLocaleString</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;白求恩&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person.<span class="title function_">toString</span>() <span class="comment">// Henry Norman Bethune</span></span><br><span class="line">person.<span class="title function_">toLocaleString</span>() <span class="comment">// 白求恩</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>toString()</code>方法返回对象的一般字符串形式，<code>toLocaleString()</code>方法返回本地的字符串形式。</p>
+<p>目前，主要有三个对象自定义了<code>toLocaleString</code>方法。</p>
+<ul>
+<li>Array.prototype.toLocaleString()</li>
+<li>Number.prototype.toLocaleString()</li>
+<li>Date.prototype.toLocaleString()</li>
+</ul>
+<p>举例来说，日期的实例对象的<code>toString</code>和<code>toLocaleString</code>返回值就不一样，而且<code>toLocaleString</code>的返回值跟用户设定的所在地域相关。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">date.<span class="title function_">toString</span>() <span class="comment">// &quot;Tue Jan 01 2018 12:01:33 GMT+0800 (CST)&quot;</span></span><br><span class="line">date.<span class="title function_">toLocaleString</span>() <span class="comment">// &quot;1/01/2018, 12:01:33 PM&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Object-prototype-hasOwnProperty"><a href="#Object-prototype-hasOwnProperty" class="headerlink" title="Object.prototype.hasOwnProperty()"></a>Object.prototype.hasOwnProperty()</h3><p><code>Object.prototype.hasOwnProperty</code>方法接受一个字符串作为参数，返回一个布尔值，表示该实例对象自身是否具有该属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">p</span>: <span class="number">123</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;p&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">obj.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;toString&#x27;</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，对象<code>obj</code>自身具有<code>p</code>属性，所以返回<code>true</code>。<code>toString</code>属性是继承的，所以返回<code>false</code>。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li>Axel Rauschmayer, <a class="link"   target="_blank" rel="noopener" href="http://www.2ality.com/2013/08/protecting-objects.html" >Protecting objects in JavaScript<i class="fas fa-external-link-alt"></i></a></li>
+<li>kangax, <a class="link"   target="_blank" rel="noopener" href="http://perfectionkills.com/understanding-delete/" >Understanding delete<i class="fas fa-external-link-alt"></i></a></li>
+<li>Jon Bretman, <a class="link"   target="_blank" rel="noopener" href="http://techblog.badoo.com/blog/2013/11/01/type-checking-in-javascript/" >Type Checking in JavaScript<i class="fas fa-external-link-alt"></i></a></li>
+<li>Cody Lindley, <a class="link"   target="_blank" rel="noopener" href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts" >Thinking About ECMAScript 5 Parts<i class="fas fa-external-link-alt"></i></a></li>
+<li>Bjorn Tipling, <a class="link"   target="_blank" rel="noopener" href="http://bjorn.tipling.com/advanced-objects-in-javascript" >Advanced objects in JavaScript<i class="fas fa-external-link-alt"></i></a></li>
+<li>Javier Márquez, <a class="link"   target="_blank" rel="noopener" href="http://arqex.com/967/javascript-properties-enumerable-writable-configurable" >JavaScript properties are enumerable, writable and configurable<i class="fas fa-external-link-alt"></i></a></li>
+<li>Sella Rafaeli, <a class="link"   target="_blank" rel="noopener" href="http://www.sellarafaeli.com/blog/native_javascript_data_binding" >Native JavaScript Data-Binding<i class="fas fa-external-link-alt"></i></a>: 使用存取函数实现model与view的双向绑定</li>
+<li>Lea Verou, <a class="link"   target="_blank" rel="noopener" href="http://lea.verou.me/2015/08/copying-properties-the-robust-way/" >Copying object properties, the robust way<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<hr>
+<p>未完待续</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/JavaScript/">#JavaScript</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/08/24/js019/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">从零开始学JavaScript（019 console 对象与控制台）</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-%E5%AF%B9%E8%B1%A1"><span class="nav-text">Object 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-text">Object()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-text">Object 构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">Object 的静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-keys-%EF%BC%8CObject-getOwnPropertyNames"><span class="nav-text">Object.keys()，Object.getOwnPropertyNames()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95"><span class="nav-text">其他方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-%E7%9A%84%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="nav-text">Object 的实例方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-valueOf"><span class="nav-text">Object.prototype.valueOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-toString"><span class="nav-text">Object.prototype.toString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%9A%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">toString() 的应用：判断数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-toLocaleString"><span class="nav-text">Object.prototype.toLocaleString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-hasOwnProperty"><span class="nav-text">Object.prototype.hasOwnProperty()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-text">参考链接</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2022</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">小师丈</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    赣ICP备2023007741号 赣公网安备 36082702000219号
+                </a>
+            </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://cloud.tencent.com/">
+                
+                    本站由 <span class="tooltip" data-content="腾讯云"><img src="/images/deploy-provider/tencent_cloud.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
